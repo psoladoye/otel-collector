@@ -1,0 +1,28 @@
+version: '3'
+
+env:
+  OUTPUT_DIR: bin
+  OTEL_VERSION: 0.86.0
+  IMAGE_NAME: otelcol-custom
+  IMAGE_VERSION: v0.0.1
+
+tasks:
+  setup:
+    cmds:
+      - echo 'Installing builder locally'
+      - go install go.opentelemetry.io/collector/cmd/builder@v${OTEL_VERSION}
+  build:
+    cmds:
+      - task: setup
+      - echo 'Building local collector binary'
+      - mkdir -p ${OUTPUT_DIR}
+      - builder --config=build-config.yaml
+
+  docker-build:
+    cmds:
+      - echo 'Building collector docker image'
+      - docker build -t ${IMAGE_NAME}:${IMAGE_VERSION} .
+
+  docker-push:
+    cmds:
+      - echo 'Pushing collector docker image'
