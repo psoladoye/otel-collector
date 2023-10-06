@@ -16,11 +16,10 @@ USER ${USER_UID}
 
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=build /build/bin/otelcol-custom /
-COPY otel-config.yaml .
-# 4317 - default OTLP gRPC receiver
-# 55679 - zpages
+COPY otel-config.yaml /etc/otelcol-custom/config.yaml
+
 EXPOSE 4317/tcp 55678/tcp  55679/tcp
 
-ENTRYPOINT ["./otelcol-custom"]
+ENTRYPOINT ["/otelcol-custom"]
 
-CMD ["--config", "otel-config.yaml"]
+CMD ["--config", "/etc/otelcol-custom/config.yaml"]
