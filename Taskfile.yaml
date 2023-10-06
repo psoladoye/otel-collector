@@ -26,3 +26,8 @@ tasks:
   docker-push:
     cmds:
       - echo 'Pushing collector docker image'
+
+  docker-run:
+    cmds:
+      - echo 'Running custom otel-collector'
+      - docker run ${IMAGE_NAME}:${IMAGE_VERSION}
