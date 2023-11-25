@@ -2,9 +2,9 @@ version: '3'
 
 env:
   OUTPUT_DIR: bin
-  OTEL_VERSION: 0.87.0
+  OTEL_VERSION: 0.89.0
   IMAGE_NAME: otelcol-custom
-  IMAGE_VERSION: v0.0.2
+  IMAGE_VERSION: v0.0.4
 
 tasks:
   setup:
