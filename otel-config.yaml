@@ -8,11 +8,11 @@ processors:
   batch: {}
 
 exporters:
-  logging:
+  debug:
 
 service:
   pipelines:
     logs:
       receivers: [ otlp ]
       processors: [ batch ]
-      exporters: [ logging ]
+      exporters: [ debug ]

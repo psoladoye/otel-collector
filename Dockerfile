@@ -1,5 +1,5 @@
 FROM --platform=$BUILDPLATFORM golang:1.20-alpine as build
-ARG  OTEL_VERSION=0.89.0
+ARG  OTEL_VERSION=0.91.0
 WORKDIR /build
 
 COPY build-config.yaml .
